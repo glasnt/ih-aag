@@ -1,0 +1,49 @@
+[tool.briefcase]
+project_name = "ih, as a GUI"
+bundle = "com.glasnt.ihaag"
+version = "0.0.1"
+url = "https://github.com/glasnt/ih-aag"
+license = "MIT license"
+author = 'Katie 'glasnt' McLaughlin'
+author_email = "katie@glasnt.com"
+
+[tool.briefcase.app.ihaag]
+formal_name = "ih, as a GUI"
+description = "A GUI-based cross-stitch chart generator"
+icon = "src/ihaag/resources/ihaag"
+sources = ['src/ihaag']
+requires = []
+
+
+[tool.briefcase.app.ihaag.macOS]
+requires = [
+    'toga-cocoa>=0.3.0.dev20',
+]
+
+[tool.briefcase.app.ihaag.linux]
+requires = [
+    'toga-gtk>=0.3.0.dev20',
+]
+system_requires = [
+    'libgirepository1.0-dev',
+    'libcairo2-dev',
+    'libpango1.0-dev',
+    'libwebkitgtk-3.0-0',
+    'gir1.2-webkit-3.0',
+]
+
+[tool.briefcase.app.ihaag.windows]
+requires = [
+    'toga-winforms>=0.3.0.dev20',
+]
+
+# Mobile deployments
+[tool.briefcase.app.ihaag.iOS]
+requires = [
+    'toga-iOS>=0.3.0.dev20',
+]
+
+[tool.briefcase.app.ihaag.android]
+requires = [
+    'toga-android>=0.3.0.dev20',
+]
