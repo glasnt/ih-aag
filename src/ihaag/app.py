@@ -8,7 +8,7 @@ import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, HIDDEN, ROW, VISIBLE
 
-from .utils import generate_chart, get_image_attributes
+from .utils import *
 
 SAMPLE_IMAGE = str(Path.cwd() / "test/images/smile.png")
 
@@ -46,11 +46,8 @@ class ihasaGUI(toga.App):
         info_box.add(self.img_info)
 
         options_box = toga.Box(**box_setup)
-
-        palette_label = toga.Label(text="Palette")
-        self.palette = toga.Selection(items=["floss", "wool"])
-
-        options_box.add(palette_label, self.palette)
+        self.settings = build_settings()
+        options_box.add(*self.settings)
 
         main_box.add(select_box)
         main_box.add(toga.Divider())
@@ -77,10 +74,10 @@ class ihasaGUI(toga.App):
         self.img_info.style.visilbility = VISIBLE
 
     def generate(self, widget):
-        inputs = {}
+        inputs = get_settings(self.settings)
         inputs["image"] = self.select_input.value
-        inputs["palette_name"] = self.palette.value
 
+        print(inputs)
         chart_fn = generate_chart(inputs)
         chart_url = "file://" + chart_fn
         print(chart_url)
