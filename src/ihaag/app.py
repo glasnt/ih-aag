@@ -18,7 +18,6 @@ class ihasaGUI(toga.App):
         main_box = toga.Box(style=Pack(direction=COLUMN))
         box_setup = {"style": Pack(direction=ROW, padding=5)}
 
-        # TODO(glasnt): file selector
         self.select_input = toga.TextInput(
             placeholder="Open an image", style=Pack(flex=1, padding=5), readonly=True
         )
@@ -38,7 +37,7 @@ class ihasaGUI(toga.App):
         )
 
         self.img_info = toga.TextInput(
-            id="info", readonly=True, style=Pack(padding=10, visibility=VISIBLE)
+            id="info", readonly=True, style=Pack(width=100, padding=10, visibility=VISIBLE)
         )
 
         info_box = toga.Box(**box_setup)
@@ -60,9 +59,6 @@ class ihasaGUI(toga.App):
         self.main_window = toga.MainWindow(title=self.formal_name)
         self.main_window.content = main_box
         self.main_window.show()
-
-    def load_image(self, widget):
-        pass
 
     def open_image(self, widget):
         selected = self.main_window.open_file_dialog("Select Image")

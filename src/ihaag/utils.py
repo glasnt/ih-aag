@@ -17,7 +17,7 @@ def build_settings():
         name = param.name
         if name in ignore:
             continue
-            
+
         if type(param.type) == click.types.Choice:
             fields.append(toga.Label(text=name, **defaults))
             fields.append(toga.Selection(id=name, items=param.type.choices, **defaults))
@@ -40,11 +40,15 @@ def get_settings(settings):
                 value = option.value
             if hasattr(option, "is_on"):
                 value = option.is_on
-            
+
+            if type(option) == toga.widgets.numberinput.NumberInput:
+                value = int(value)
+
             inputs[option.id] = value
     inputs["palette_name"] = inputs["palette"]
     del inputs["palette"]
     return inputs
+
 
 def get_image_attributes(filename):
     """For an image, get some preview elements"""

@@ -67,4 +67,4 @@ django/
 
 # other
 *.dist-info/
-smile.html
+*.html
