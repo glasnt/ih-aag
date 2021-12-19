@@ -64,3 +64,6 @@ windows/
 android/
 linux/
 django/
+
+# other
+*.dist-info/

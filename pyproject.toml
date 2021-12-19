@@ -4,7 +4,7 @@ bundle = "com.glasnt.ihaag"
 version = "0.0.1"
 url = "https://github.com/glasnt/ih-aag"
 license = "MIT license"
-author = 'Katie 'glasnt' McLaughlin'
+author = 'Katie McLaughlin'
 author_email = "katie@glasnt.com"
 
 [tool.briefcase.app.ihaag]
@@ -12,7 +12,9 @@ formal_name = "ih, as a GUI"
 description = "A GUI-based cross-stitch chart generator"
 icon = "src/ihaag/resources/ihaag"
 sources = ['src/ihaag']
-requires = []
+requires = [
+    'ih',
+]
 
 
 [tool.briefcase.app.ihaag.macOS]
