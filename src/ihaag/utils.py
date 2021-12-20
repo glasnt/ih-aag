@@ -28,13 +28,16 @@ def build_settings(self):
 
         if type(param.type) == click.types.Choice:
             fields.append(toga.Label(text=name, **LEFT_ELEMENT))
-            fields.append(
-                toga.Selection(
-                    id=name,
-                    items=param.type.choices,
-                    **RIGHT_ELEMENT,
-                )
+            myfield = toga.Selection(
+                id=name,
+                items=param.type.choices,
+                **RIGHT_ELEMENT,
             )
+            if myfield.id == "palette":
+                self.palette = myfield
+                self.palette.on_select = self.get_image_attributes
+
+            fields.append(myfield)
         elif type(param.type) == click.types.IntParamType:
             fields.append(toga.Label(text=name, **LEFT_ELEMENT))
             myfield = toga.NumberInput(
@@ -65,7 +68,7 @@ def build_settings(self):
 def get_settings(boxes):
     """From the Toga widgets, get a dict of values"""
     inputs = {}
-    print(boxes)
+
     for options in boxes:
         for option in options.children:
             if type(option.id) is str:
@@ -78,7 +81,7 @@ def get_settings(boxes):
                     value = int(value)
 
                 inputs[option.id] = value
-    print(inputs)
+
     inputs["palette_name"] = inputs["palette"]
     del inputs["palette"]
     return inputs

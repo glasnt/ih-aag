@@ -1,7 +1,7 @@
 [tool.briefcase]
 project_name = "ih, as a GUI"
 bundle = "com.glasnt.ihaag"
-version = "0.0.1"
+version = "0.1.0"
 url = "https://github.com/glasnt/ih-aag"
 license = "MIT license"
 author = 'Katie McLaughlin'
@@ -14,6 +14,7 @@ icon = "src/ihaag/resources/ihaag"
 sources = ['src/ihaag']
 requires = [
     'ih',
+    'setuptools'
 ]
 
 
